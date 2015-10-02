@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"> 
+
+<h:head></h:head> 
+<body> 
+
+		<h:form>
+			<h:panelGrid columns="3" >
+				<h:outputText value="Nome:" />
+				<h:inputText value="#{vendedorMB.vendedores.nome}" />
+				<h:inputHidden/>
+				
+				<h:outputText value="Comissão:" />
+				<h:inputText value="#{vendedorMB.vendedores.comissao}" />
+				<h:inputHidden/>
+				
+				<h:column>
+				<h:commandButton value="Salvar" action="#{vendedorMB.salvar}" />
+				</h:column>	
+				
+				<h:column>
+				<h:commandButton value="Editar" action="#{vendedorMB.editar}" />
+				</h:column>		
+				
+				<h:column>
+				<h:commandButton value="Excluir" action="#{vendedorMB.deletar}" />
+				</h:column>				
+			</h:panelGrid>
+		</h:form>	
+		
+		<div>
+			<h:dataTable border="1" value="#{vendedorMB.listaVendedores}" var="und">
+				<h:column>
+				<f:facet name="header">Id</f:facet>
+				<h:selectBooleanCheckbox  value="#{und.idVendedor}"/>
+				#{und.idVendedor}
+				</h:column>	
+				
+				<h:column>
+				<f:facet name="header">Nome</f:facet>
+				<h:selectBooleanCheckbox  value="#{und.nome}"/>
+				#{und.nome}
+				</h:column>							
+					
+				<h:column>
+				<f:facet name="header">Comissão</f:facet>
+				#{und.comissao}
+				</h:column>	
+			</h:dataTable>
+		</div>	
+
+</body> 
+</html>
